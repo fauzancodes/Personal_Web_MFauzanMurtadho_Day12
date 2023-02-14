@@ -1,0 +1,81 @@
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  color: #1d1d1d;
+  scroll-behavior: smooth;
+  transition-property: all;
+  transition-timing-function: ease;
+  transition-duration: 0.5s;
+}
+html, body {
+  height: 100%;
+}
+.full-height {
+  min-height: 100%;
+}
+a h5 {
+  color: #000000 !important;
+}
+a:hover h5 {
+  color: #006bff !important;
+  text-decoration: underline;
+}
+/*Bootstrap Adjustment*/
+.btn-bg-primary-custom-hover:hover {
+  background-color: #006bff;
+  border-color: #006bff;
+}
+.btn-text-primary-custom-hover:hover,.btn-text-primary-custom-hover:hover i {
+  color: #006bff !important;
+}
+.nav-link-custom-hover:hover {
+  color: #006bff !important;
+}
+.text-truncation-in-3-line {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  white-space: pre-wrap;
+}
+/*--------------------*/
+#profile-picture {
+  height: fit-content;
+}
+.project-container {
+  width: 30%;
+}
+#profile-picture .card-img-top {
+  height: 400px;
+}
+.card-img-top {
+  height: 225px;
+}
+.btn-edit, .btn-delete {
+  width: 49%;
+}
+textarea {
+  resize: none;
+  height: 10rem;
+}
+.project-container:hover {
+  width: 35%;
+}
+#about-me .fa-brands:hover {
+  transform: scale(1.25);
+}
+@media (max-width: 1024px) {
+  #home {
+    padding: 2rem !important;
+    border-radius: 0 !important;
+  }
+  .project-container {
+    width: 100% !important;
+  }
+  #project-details img {
+    margin-bottom: 2rem;
+  }
+  #navbar-content .btn-bg-primary-custom-hover {
+    margin-top: 1rem;
+  }
+}

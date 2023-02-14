@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Update Project | {{.Data.Title}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/style.css">
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-expand-lg bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/public/images/logo.png"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-content">
+          <ul class="navbar-nav nav-link-custom-hover me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom-hover" aria-current="page" href="/">Home</a>
+            </li>
+            {{if .Data.IsLogin}}
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom-hover" href="/add-project-page">Add Project</a>
+            </li>
+            {{end}}
+          </ul>
+          {{if not .Data.IsLogin}}
+          <div class="me-4">
+            <a href="/register" class="nav-link nav-link-custom-hover">Register</a>
+          </div>
+          <div class="me-4">
+            <a href="/login" class="nav-link nav-link-custom-hover">Login</a>
+          </div>
+          {{end}}
+          {{if .Data.IsLogin}}
+          <div class="me-4">
+            <a href="/" class="nav-link nav-link-custom-hover">User: {{.Data.Username}}</a>
+          </div>
+          <div class="me-4">
+            <a href="/logout" class="nav-link nav-link-custom-hover">Logout</a>
+          </div>
+          {{end}}
+          <div>
+            <a href="/contact-me" class="btn btn-dark btn-bg-primary-custom-hover">Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="bg-body-secondary d-flex flex-column justify-content-center align-items-center py-5">
+      <h1 class="fw-bold text-center py-5">UPDATE MY PROJECT</h1>
+      <form action="/update-project/{{.Id}}" method="post" class="col-11 col-lg-5" enctype="multipart/form-data" novalidate>
+        <div class="mb-4">
+          <label for="project-name" class="form-label fw-semibold mb-0">Project Name</label>
+          <input type="text" name="project-name" class="form-control shadow" id="project-name" aria-describedby="project-name" placeholder="Official Website of Whiterun, Skyrim" value={{.ProjectDetails.ProjectName}} required>
+          <div class="invalid-feedback">
+            Please fill in the Project Name field.
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="mb-4 w-50 me-3">
+            <label for="start-date" class="form-label fw-semibold mb-0">Start Date</label>
+            <input type="date" name="start-date" class="form-control shadow" id="start-date" aria-describedby="start-date" value={{.StartDateString}} required>
+            <div class="invalid-feedback">
+              Please fill in the Start Date field.
+            </div>
+          </div>
+          <div class="mb-4 w-50">
+            <label for="end-date" class="form-label fw-semibold mb-0">End Date</label>
+            <input type="date" name="end-date" class="form-control shadow" id="end-date" aria-describedby="end-date" value={{.EndDateString}} required>
+            <div class="invalid-feedback">
+              Please fill in the End Date field.
+            </div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label for="description" class="form-label fw-semibold mb-0">Description</label>
+          <textarea class="form-control shadow" name="description" id="description" aria-describedby="description" placeholder="An official website made to explain about the Whiterun region in Skyrim." required>{{.ProjectDetails.Description}}</textarea>
+          <div class="invalid-feedback">
+            Please fill in the Description field.
+          </div>
+        </div>
+        <label class="fw-semibold mb-3">Technologies</label>
+        <div class="d-flex">
+          <div class="w-50">
+            <div class="mb-3 form-check">
+              <input type="checkbox" name="technology" class="form-check-input shadow" id="technology-1" value="node" {{if .Node}}checked{{end}}>
+              <label class="form-check-label" for="technology-1">Node.JS</label>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" name="technology" class="form-check-input shadow" id="technology-2" value="react" {{if .React}}checked{{end}}>
+              <label class="form-check-label" for="technology-2">React</label>
+            </div>
+          </div>
+          <div class="w-50">
+            <div class="mb-3 form-check">
+              <input type="checkbox" name="technology" class="form-check-input shadow" id="technology-3" value="angular" {{if .Angular}}checked{{end}}>
+              <label class="form-check-label" for="technology-3">Angular</label>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" name="technology" class="form-check-input shadow" id="technology-4" value="vuejs" {{if .Vuejs}}checked{{end}}>
+              <label class="form-check-label" for="technology-4">Vue.JS</label>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4 position-relative">
+          <label for="upload-image" class="form-label fw-semibold mb-0">Upload Image</label>
+          <input type="file" class="form-control shadow" id="upload-image" aria-describedby="upload-image" name="upload-image" required>
+          <i class="fa-solid fa-paperclip position-absolute" style="right:2%;bottom:17%"></i>
+        </div>
+        <div class="d-flex justify-content-end mt-5">
+          <button type="submit" class="btn btn-dark btn-bg-primary-custom-hover px-5 rounded-pill py-1 fw-semibold">submit</button>
+        </div>
+      </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="/public/js/form-validation.js"></script>
+  </body>
+</html>

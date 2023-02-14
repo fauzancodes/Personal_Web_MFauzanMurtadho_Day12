@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{.Data.Title}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/style.css">
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-expand-lg bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/public/images/logo.png"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-content">
+          <ul class="navbar-nav nav-link-custom-hover me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom-hover active fw-bold" aria-current="page" href="/">Home</a>
+            </li>
+            {{if .Data.IsLogin}}
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom-hover" href="/add-project-page">Add Project</a>
+            </li>
+            {{end}}
+          </ul>
+          {{if not .Data.IsLogin}}
+          <div class="me-4">
+            <a href="/register" class="nav-link nav-link-custom-hover">Register</a>
+          </div>
+          <div class="me-4">
+            <a href="/login" class="nav-link nav-link-custom-hover">Login</a>
+          </div>
+          {{end}}
+          {{if .Data.IsLogin}}
+          <div class="me-4">
+            <a href="/" class="nav-link nav-link-custom-hover">User: {{.Data.Username}}</a>
+          </div>
+          <div class="me-4">
+            <a href="/logout" class="nav-link nav-link-custom-hover">Logout</a>
+          </div>
+          {{end}}
+          <div>
+            <a href="/contact-me" class="btn btn-dark btn-bg-primary-custom-hover">Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    {{if .Data.FlashData}}
+    <div class="alert alert-primary position-fixed m-0" role="alert" style="width: fit-content;bottom: 10px; left: 10px;z-index: 10;">
+      {{.Data.FlashData}}
+    </div>
+    {{end}}
+    <div class="bg-body-secondary d-flex justify-content-center align-items-center py-5">
+      <div id="home" class="container gap-5 bg-white rounded shadow-lg d-flex justify-content-between align-items-center flex-wrap my-5 p-5">
+        <div id="about-me" class="col-12 col-lg-7">
+          <h1 class="fw-bold mb-4">Hi! Welcome to my hut</h1>
+          <p>
+            Greeting! I'm Fauzan, a man with a Geophysical Engineering educational background who is in the early stages of becoming a Fullstack Developer. Curious why I switched from Geophysical Engineering to Fullstack Developer? Here's the short story.
+            <br/><br/>
+            Geophysics is a science used in the field of natural resources, especially in the search for natural resources. Meanwhile, in Indonesia itself, currently, most of natural resource companies are not in the search stage, but are in the stage of taking and developing the natural resource fields that have been found. This makes it difficult for me to pursue a career in Geophysics.
+            <br/><br/>
+            Then I did a research, is there any other field that I like more than Geophysical Engineering. I tried Graphic Design, Data Science and Web Development. And the result is that I feel a greater sense of love in Web Development. Do you like playing games? I find this feeling like when playing games, you know, it's like don't care about time, don't care about sleeping, don't care about eating, even if our wives are spoiling teasing us beside us wearing sexy clothes, we can easily ignore it, Lol &#128518;. I got that feeling in Web Development.
+            <br/><br/>
+            That's why now I'm starting to study at <a href="https://dumbways.id/" target="_blank">Dumbways.id</a>. Here I was taught the knowledge to become a Fullstack Developer, starting from basic knowledge to advance through theory and practice with extraordinary friends and mentors. I hope we can soon be able to work together on a big project that has many benefits.
+          </p>
+          <div class="d-flex align-items-center my-5">
+            <a href="/contact-me" target="_blank" class="btn btn-dark btn-bg-primary-custom-hover rounded-pill px-4">Contact</a>
+            <a href="/public/CV - M Fauzan Murtadho.pdf"  download class="btn btn-link btn-text-primary-custom-hover rounded-pill px-4 text-decoration-none text-body">Download CV<i class="fa-solid fa-download ms-2"></i></a>
+          </div>
+          <div class="d-flex align-items-center flex-wrap">
+            <a href="https://wa.me/6282278154467" target="_blank">
+              <i class="fa-brands fa-whatsapp fa-3x me-4 my-2 btn-text-primary-custom-hover"></i>
+            </a>
+            <a href="https://t.me/fauzancodes" target="_blank">
+              <i class="fa-brands fa-telegram fa-3x me-4 my-2 btn-text-primary-custom-hover"></i>
+            </a>
+            <a href="https://linkedin.com/in/m-fauzan-murtadho-337765141" target="_blank">
+              <i class="fa-brands fa-linkedin fa-3x me-4 my-2 btn-text-primary-custom-hover"></i>
+            </a>
+            <a href="https://www.instagram.com/fauzan.codes/" target="_blank">
+              <i class="fa-brands fa-instagram fa-3x me-4 my-2 btn-text-primary-custom-hover"></i>
+            </a>
+            <a href="https://github.com/fauzancodes" target="_blank">
+              <i class="fa-brands fa-github fa-3x my-2 btn-text-primary-custom-hover"></i>
+            </a>
+          </div>
+        </div>
+        <div id="profile-picture" class="card shadow-lg col-12 col-lg-4 border-0">
+          <img src="/public/images/profile-picture.png" class="card-img-top object-fit-cover" alt="Profile Picture">
+          <div class="card-body">
+            <h5 class="card-title fw-bold text-center mb-0">M Fauzan Murtadho</h5>
+            <p class="card-text text-center">Fullstack Developer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-secondary-subtle py-5">
+      <h1 class="fw-bold text-center pb-5">MY PROJECT</h1>
+      <div class="container gap-4 d-flex justify-content-around align-items-center flex-wrap">
+        {{range $index, $project := .Projects}}
+        <div class="card project-container p-3 shadow bg-white border-0 overflow-hidden">
+          <img src="/uploads/{{$project.Image}}" class="card-img-top rounded object-fit-cover" alt="Mobile App 1">
+          <div class="card-body px-0 pb-0 overflow-hidden">
+            <a href="/projects/{{$project.Id}}" target="_blank" class="text-decoration-none"><h5 class="card-title fw-bold mb-0">{{$project.ProjectName}}</h5></a>
+            <div class="text-secondary">duration: {{$project.DurationText}}</div>
+            <p class="card-text mt-4 text-truncation-in-3-line">{{$project.Description}}</p>
+            <div class="mt-4 {{if $.Data.IsLogin}}mb-4{{end}} d-flex flex-wrap align-items-center">
+              {{range $index, $technology := $project.Technologies}}
+              <i class="fa-brands fa-{{$technology}} fa-3x me-4 my-2"></i>
+              {{end}}
+            </div>
+            {{if $.Data.IsLogin}}
+            <div>
+              <a href="/update-project-page/{{$project.Id}}" class="btn btn-dark py-0 btn-bg-primary-custom-hover btn-edit">edit</a>
+              <a href="/delete-project/{{$project.Id}}" class="btn btn-dark py-0 btn-bg-primary-custom-hover btn-delete">delete</a>
+            </div>
+            {{end}}
+          </div>
+        </div>
+        {{end}}
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
